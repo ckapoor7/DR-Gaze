@@ -1,5 +1,15 @@
 #+TITLE: DR-Gaze
 
 * Abstract
+In the recent past, greater accessibility to powerful computational resources has enabled progress in the field of Deep Learning and Computer Vision to grow by leaps and bounds. This in consequence has lent progress to the domain of Autonomous Driving and Navigation Systems. Most of the present research work has been focused towards driving scenarios in the European or American roads. Our paper draws special attention towards the Indian driving context. To this effect, we propose a novel architecture, DR-Gaze, which is used to map the driver’s gaze on the road. We compare our results with previous works and state-of-the-art results along with detailed ablation studies on the DGAZE dataset.
+
+* Install dependencies
+The required package dependencies can be installed using the =pip= package manager.
+#+begin_src shell
+pip install -r requirements.txt
+#+end_src
+Our code uses the following PyTorch and CUDA versions
+1. PyTorch = 1.10.0
+2. CUDA = 11.2
 
 * Run
