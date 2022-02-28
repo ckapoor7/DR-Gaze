@@ -14,8 +14,8 @@ from torch.nn.functional import normalize
 from torchsummary import summary
 
 
-optimizer = optim.Adam(model.parameters(), lr=1e-5, eps=1e-5)
-scheduler = optim.lr_scheduler.MultiStepLR(optimizer, [40,55], gamma=0.1)
+optimizer = optim.Adam(model.parameters(), lr=lr, eps=eps)
+scheduler = optim.lr_scheduler.MultiStepLR(optimizer, [40,55], gamma=gamma)
 loss_fn = nn.L1Loss()
 
 
@@ -41,3 +41,12 @@ def train(n_epochs, optimizer, model, loss_fn, train_loader, scheduler):
             loss_train += loss.item()
         scheduler.step()
         torch.save(model.state_dict(), '/content/drive/MyDrive/DGAZE/saved_weights/final_network.pth')
+
+
+
+train(n_epochs=n_epochs,
+      optimizer=optimizer,
+      model=model,
+      loss_fn=loss_fn,
+      train_loader=train_loader,
+      scheduler=scheduler)
