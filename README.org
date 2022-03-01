@@ -1,5 +1,10 @@
 #+TITLE: DR-Gaze
 
+Contributors:
++ [[http://github.com/ckapoor7][Chaitanya Kapoor]]
++ [[https://github.com/TheRealBaka][Kshitij Kumar]]
++ [[https://github.com/soumvincent][Soumya Vishnoi]]
++ [[https://github.com/Sriramramanathan01][Sriram Ramanathan]]
 * Abstract
 In the recent past, greater accessibility to powerful computational resources has enabled progress in the field of Deep Learning and Computer Vision to grow by leaps and bounds. This in consequence has lent progress to the domain of Autonomous Driving and Navigation Systems. Most of the present research work has been focused towards driving scenarios in the European or American roads. Our paper draws special attention towards the Indian driving context. To this effect, we propose a novel architecture, DR-Gaze, which is used to map the driver’s gaze on the road. We compare our results with previous works and state-of-the-art results along with detailed ablation studies on the DGAZE dataset.
 
@@ -13,3 +18,16 @@ Our code uses the following PyTorch and CUDA versions
 2. CUDA = 11.2
 
 * Run
+For training the model from scratch, one must specify the basic block paramters like the example below. Take note that the number of
+#+begin_src shell
+python3 train.py --n_epochs 60 --lr 1e-5 -num_channels 3 --num_features 32 --growth_rate 32 --num_blocks 4 --num_layers 4
+#+end_src
+Please note that the directory destinations of the dataset must be changed in the =dataloader.py= script in accordance to their path on your system. Also, the number of input features would need to be tweaked if the model parameters are changed from their default value in =network/dr-gaze.py=.
+
+For inference, do the following:
+#+begin_src shell
+#+end_src
+The predicted and ground truth gaze coordinates can be visualized with the help of the =visualize= function present in the =src/utils.py= script by providing the image path, ground truth label and predicted label as detailed in its docstring.
+#+begin_src python
+visualize('Path/to/image', (x_coord, y_coord), (x_coord, y_coord))
+#+end_src
