@@ -37,6 +37,7 @@ def get_args():
                        help='number of residual dense blocks')
    parser.add_argument('--num_layers', type=int, default=4,
                        help='number of residual layers')
+   parser.add_argument('--device', type=str, default="cuda")
 
    args = parser.parse_args()
    return args
@@ -48,11 +49,11 @@ def train(n_epochs, optimizer, model, loss_fn, train_loader, scheduler, dest_dir
         loss_train = 0.0
         loop = tqdm(enumerate(train_loader), total=len(train_loader))
         for batch_idx, (image_list, labels) in loop:
-            image_list[0]= image_list[0].to(device=device)
-            image_list[1]= image_list[1].to(device=device)
+            image_list[0]= image_list[0].to(device=args.device)
+            image_list[1]= image_list[1].to(device=args.device)
 
             outputs = model(image_list[0], image_list[1])
-            labels = labels.to(device=device)
+            labels = labels.to(device=args.device)
 
             loss = loss_fn(outputs, labels)
             optimizer.zero_grad()

@@ -26,8 +26,9 @@ Please note that the directory destinations of the dataset must be changed in th
 
 For inference, do the following:
 #+begin_src shell
+python3 test.py --weight_dir '/Path/to/directory' num_channels 3 --num_features 32 --growth_rate 32 --num_blocks 4 --num_layers 4
 #+end_src
 The predicted and ground truth gaze coordinates can be visualized with the help of the =visualize= function present in the =src/utils.py= script by providing the image path, ground truth label and predicted label as detailed in its docstring.
 #+begin_src python
-visualize('Path/to/image', (x_coord, y_coord), (x_coord, y_coord))
+visualize('/Path/to/image', (x_coord, y_coord), (x_coord, y_coord))
 #+end_src
